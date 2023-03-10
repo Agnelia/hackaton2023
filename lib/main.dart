@@ -45,20 +45,8 @@ class MyHomePage extends StatelessWidget {
             colorSchemeSeed: Color.fromARGB(255, 31, 210, 241),
             useMaterial3: true),
         home: Scaffold(
-          appBar: AppBar(title: const Text('Card Examples')),
-          body: Column(children: [
-            Row(children: const <Widget>[
-              FilledCard(),
-              FilledCard(),
-              FilledCard()
-            ]),
-            Row(children: const <Widget>[
-              FilledCard(),
-              FilledCard(),
-              FilledCard()
-            ]),
-          ]),
-        ));
+            appBar: AppBar(title: const Text('Card Examples')),
+            body: ListOfCards()));
   }
 }
 
