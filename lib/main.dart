@@ -1,3 +1,4 @@
+import 'package:bankofknowledge/tile.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -27,6 +28,11 @@ class MyApp extends StatelessWidget {
 
 class MyAppState extends ChangeNotifier {
   var current = WordPair.random();
+
+  void getNext() {
+    current = WordPair.random();
+    notifyListeners();
+  }
 }
 
 class MyHomePage extends StatelessWidget {
@@ -34,22 +40,46 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
 
-    return Scaffold(
-      body: Column(
-        children: [
-          Text('A random idea yes:'),
-          Text(appState.current.asLowerCase),
-          ElevatedButton(
-            onPressed: () {
-              print('button pressed!');
-            },
-            child: Text('Next'),
-          )
-        ],
-      ),
-    );
+    return MaterialApp(
+        theme: ThemeData(
+            colorSchemeSeed: Color.fromARGB(255, 31, 210, 241),
+            useMaterial3: true),
+        home: Scaffold(
+          appBar: AppBar(title: const Text('Card Examples')),
+          body: Column(children: [
+            Row(children: const <Widget>[
+              FilledCard(),
+              FilledCard(),
+              FilledCard()
+            ]),
+            Row(children: const <Widget>[
+              FilledCard(),
+              FilledCard(),
+              FilledCard()
+            ]),
+          ]),
+        ));
   }
 }
+
+    // Scaffold(
+      
+    //   body: Column(
+    //     children: [
+    //       Text('A random idea yes:'),
+    //       Text(appState.current.asLowerCase),
+    //       ElevatedButton(
+    //         onPressed: () {
+    //           appState.getNext();
+    //         },
+    //         child: Text('Next'),
+    //       ),
+    //       FilledCard(),
+    //     ],
+    //   ),
+    // );
+  
+
 
 
 
